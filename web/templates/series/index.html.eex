@@ -1,3 +1,13 @@
-<div class="jumbotron">
-  <h2>Hello World, from Phoenix!</h2>
-</div>
+<h2>Search results:</h2>
+<form class="" action="/series" method="get">
+  <input type="text" name="q" value="">
+</form>
+
+<ul>
+  <%= for show <- @shows do %>
+    <li><%= show["show"]["name"] %></li>
+    <a href="<%= series_path(@conn, :show, show["show"]["id"]) %>">
+      <img src="<%=show["show"]["image"]["medium"]%>" alt="" />
+    </a>
+  <% end %>
+</ul>

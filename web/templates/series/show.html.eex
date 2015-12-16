@@ -1,1 +1,10 @@
-<h1>Show!!!! <%= @id %></h1>
+<h1><%= @serie["name"] %></h1>
+
+<ul>
+  <%= for season <- @serie |> seasons do %>
+    <h3>Season <%= season |> List.first |> Dict.get("season") %></h3>
+    <%= for episode <- season do %>
+      <li><%= "#{episode["name"]} - S#{episode["season"]}E#{episode["number"]}" %></li>
+    <% end %>
+  <% end %>
+</ul>
